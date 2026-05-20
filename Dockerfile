@@ -1,11 +1,10 @@
-FROM node:22-slim AS builder
-WORKDIR /usr/src/app
-COPY package.json .
-COPY package-lock.json* .
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
 RUN npm ci
-
-FROM node:22-slim
-WORKDIR /usr/src/app
-COPY --from=builder /usr/src/app/ /usr/src/app/
 COPY . .
-CMD ["npx", "quartz", "build", "--serve"]
+RUN npx quartz build
+
+FROM nginx:alpine
+COPY --from=builder /app/public /usr/share/nginx/html
+EXPOSE 80
