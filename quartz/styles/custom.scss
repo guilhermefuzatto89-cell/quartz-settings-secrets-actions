@@ -1,3 +1,54 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// ─────────────────────────────────────────────
+//  Custom styles — Jardim Digital
+// ─────────────────────────────────────────────
+
+// Gráfico em destaque na página inicial (afterBody)
+.page[data-slug="index"] {
+  #graph-container {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--lightgray);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    margin: 2rem 0;
+    background: var(--light);
+
+    .graph-outer {
+      height: 480px !important;
+    }
+  }
+
+  // Título da seção do gráfico
+  #graph-container::before {
+    content: "🌐 Mapa do Jardim";
+    display: block;
+    padding: 0.8rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--darkgray);
+    border-bottom: 1px solid var(--lightgray);
+    background: var(--light);
+    letter-spacing: 0.03em;
+  }
+}
+
+// Gráfico na barra lateral (outras páginas)
+.right {
+  #graph-container {
+    border-radius: 8px;
+    border: 1px solid var(--lightgray);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    .graph-outer {
+      height: 280px !important;
+    }
+  }
+}
+
+// Animação suave ao hover no gráfico
+#graph-container:hover {
+  border-color: var(--secondary);
+  transition: border-color 0.3s ease;
+}

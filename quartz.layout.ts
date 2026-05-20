@@ -5,11 +5,43 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [
+    // Gráfico global em destaque na página inicial
+    Component.ConditionalRender({
+      component: Component.Graph({
+        localGraph: {
+          drag: true,
+          zoom: true,
+          depth: 1,
+          scale: 1.1,
+          repelForce: 0.5,
+          centerForce: 0.3,
+          linkDistance: 30,
+          fontSize: 0.6,
+          opacityScale: 1,
+          removeTags: [],
+          showTags: true,
+        },
+        globalGraph: {
+          drag: true,
+          zoom: true,
+          depth: -1,
+          scale: 0.9,
+          repelForce: 0.5,
+          centerForce: 0.3,
+          linkDistance: 30,
+          fontSize: 0.6,
+          opacityScale: 1,
+          removeTags: [],
+          showTags: true,
+        },
+      }),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+  ],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      "Jardim Digital": "https://guilherme.ppg.br",
     },
   }),
 }
@@ -41,7 +73,34 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Explorer(),
   ],
   right: [
-    Component.Graph(),
+    Component.Graph({
+      localGraph: {
+        drag: true,
+        zoom: true,
+        depth: 1,
+        scale: 1.1,
+        repelForce: 0.5,
+        centerForce: 0.3,
+        linkDistance: 30,
+        fontSize: 0.6,
+        opacityScale: 1,
+        removeTags: [],
+        showTags: true,
+      },
+      globalGraph: {
+        drag: true,
+        zoom: true,
+        depth: -1,
+        scale: 0.9,
+        repelForce: 0.5,
+        centerForce: 0.3,
+        linkDistance: 30,
+        fontSize: 0.6,
+        opacityScale: 1,
+        removeTags: [],
+        showTags: true,
+      },
+    }),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
