@@ -4,51 +4,106 @@
 //  Custom styles — Jardim Digital
 // ─────────────────────────────────────────────
 
-// Gráfico em destaque na página inicial (afterBody)
+// ── GRÁFICO NA PÁGINA INICIAL ─────────────────
 .page[data-slug="index"] {
   #graph-container {
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    border: 1px solid var(--lightgray);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    margin: 2rem 0;
+    border: 2px solid var(--secondary);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    margin: 2.5rem 0;
     background: var(--light);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.18);
+      border-color: var(--tertiary);
+    }
 
     .graph-outer {
-      height: 480px !important;
+      height: 560px !important;
     }
   }
 
-  // Título da seção do gráfico
+  // Label do gráfico na home
   #graph-container::before {
-    content: "🌐 Mapa do Jardim";
+    content: "🌐 Mapa do Jardim Digital";
     display: block;
-    padding: 0.8rem 1rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--darkgray);
-    border-bottom: 1px solid var(--lightgray);
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--secondary);
+    border-bottom: 2px solid var(--secondary);
     background: var(--light);
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 }
 
-// Gráfico na barra lateral (outras páginas)
+// ── GRÁFICO NA BARRA LATERAL ──────────────────
 .right {
   #graph-container {
-    border-radius: 8px;
-    border: 1px solid var(--lightgray);
+    border-radius: 10px;
+    border: 1.5px solid var(--secondary);
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    background: var(--light);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+      border-color: var(--tertiary);
+    }
 
     .graph-outer {
-      height: 280px !important;
+      height: 320px !important;
+    }
+
+    // Label no sidebar
+    &::before {
+      content: "🌐 Mapa do Jardim";
+      display: block;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--secondary);
+      border-bottom: 1.5px solid var(--secondary);
+      background: var(--light);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
   }
 }
 
-// Animação suave ao hover no gráfico
-#graph-container:hover {
-  border-color: var(--secondary);
-  transition: border-color 0.3s ease;
+// ── PÁGINA INICIAL — destaque visual ──────────
+.page[data-slug="index"] {
+  .article-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  // Separador antes do gráfico
+  #graph-container {
+    margin-top: 3rem;
+    position: relative;
+  }
+}
+
+// ── LINKS ─────────────────────────────────────
+a.internal {
+  text-decoration: none;
+  border-bottom: 1px dotted var(--secondary);
+
+  &:hover {
+    border-bottom: 1px solid var(--secondary);
+  }
+}
+
+// ── BACKLINKS ─────────────────────────────────
+.backlinks {
+  border-radius: 8px;
+  border: 1px solid var(--lightgray);
+  padding: 0.8rem;
+  margin-top: 1rem;
 }
